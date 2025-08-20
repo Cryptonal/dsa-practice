@@ -98,3 +98,31 @@ function arrayAverage(arr) {
 }
 
 console.log("arrayAverage", arrayAverage([2, 4, 6, 8])); // Expects 5
+
+/**
+Write a function that finds the maximum number in an array
+*/
+function getMax(arr) {
+    let maxNum = arr[0];
+    for(let i= 0; i<arr.length; i++){
+        if(maxNum < arr[i]){
+            maxNum = arr[i];
+        }
+    }
+    return maxNum;
+}
+
+console.log("getMax", getMax([7, 1, 9, 3, 6])); // Expects 9
+
+
+/**
+Write a function that takes an array and returns a new array
+with duplicate values removed
+*/
+function removeDuplicates(arr) {
+   const unique = [...new Set(arr)];
+   return unique;
+}
+
+console.log("removeDuplicates", removeDuplicates([1, 2, 2, 3, 4, 4, 5])); 
+// Expects [1, 2, 3, 4, 5]
