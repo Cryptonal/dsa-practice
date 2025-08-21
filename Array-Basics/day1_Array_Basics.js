@@ -126,3 +126,15 @@ function removeDuplicates(arr) {
 
 console.log("removeDuplicates", removeDuplicates([1, 2, 2, 3, 4, 4, 5])); 
 // Expects [1, 2, 3, 4, 5]
+
+/**
+Write a function that takes two arrays and merges them
+into a single array
+*/
+function mergeArrays(arr1, arr2) {
+    let mergedArrays = arr1.concat(arr2);
+    return mergedArrays;
+}
+
+console.log("mergeArrays", mergeArrays([1, 2, 3], [4, 5, 6])); 
+// Expects [1, 2, 3, 4, 5, 6]
