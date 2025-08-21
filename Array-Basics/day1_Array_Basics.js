@@ -138,3 +138,31 @@ function mergeArrays(arr1, arr2) {
 
 console.log("mergeArrays", mergeArrays([1, 2, 3], [4, 5, 6])); 
 // Expects [1, 2, 3, 4, 5, 6]
+
+
+
+
+
+//Medium difficulty question
+/**
+Write a function that rotates an array to the right
+by k steps
+*/
+function reverse(arr, start, end) {
+    while(start < end){
+        [arr[start], arr[end]] = [arr[end], arr[start]];
+        start++;
+        end--;
+    }
+}
+
+function rotateArray(arr, k) {
+    k = k % arr.length;
+    arr.reverse();
+    reverse(arr, 0, k - 1);
+    reverse(arr, k, arr.length - 1);
+    return arr;
+}
+
+console.log("rotateArray", rotateArray([1, 2, 3, 4, 5], 2)); 
+// Expects [4, 5, 1, 2, 3]
