@@ -166,3 +166,84 @@ function rotateArray(arr, k) {
 
 console.log("rotateArray", rotateArray([1, 2, 3, 4, 5], 2)); 
 // Expects [4, 5, 1, 2, 3]
+
+
+/**
+Write a function that checks if an array is a palindrome
+(the same forward and backward)
+*/
+function isArrayPalindrome(arr) {
+    let invertedArray = [];
+    for(let j = arr.length - 1; j>-1; j--){
+        invertedArray.push(arr[j]);
+    }
+    /* we cannot compare the arrays directly using the usual equals operator because Javascript arrays have type object, so it can be done 
+    either by converting the JSON or using .toString().
+    */
+    // return arr.toString() === invertedArray.toString() ? true: false; OR
+    return JSON.stringify(arr) === JSON.stringify(invertedArray);
+}
+
+console.log("isArrayPalindrome", isArrayPalindrome([1, 2, 3, 2, 1])); // Expects true
+console.log("isArrayPalindrome", isArrayPalindrome([1, 2, 3, 4])); // Expects false
+
+
+/**
+Write a function that finds the second largest number
+in an array
+*/
+function secondLargest(arr) {
+    //First need to remove duplicates and sort
+    const sortedDistinctArray = [...new Set(arr)].sort((a, b) => a - b);
+    return sortedDistinctArray[arr.length - 2];   //Since to get to the index of 45 which is at second last index
+}
+
+console.log("secondLargest", secondLargest([10, 20, 4, 45, 99])); // Expects 45
+
+
+/**
+Write a function that takes two sorted arrays and returns
+a new sorted array containing all elements from both
+*/
+function mergeSortedArrays(a, b) {
+    //combining two arrays:
+    return a.concat(b).sort((a, b)=> a - b);
+    //OR
+    const mergedArrays = a.concat(b);
+    return mergedArrays.sort((a, b) => a - b);
+}
+
+console.log("mergeSortedArrays", mergeSortedArrays([1, 3, 5], [2, 4, 6])); 
+// Expects [1, 2, 3, 4, 5, 6]
+
+
+/**
+Write a function that removes duplicates from a sorted array
+in-place and returns the new length
+*/
+function removeDuplicatesSorted(arr) {
+    const duplicatesRemovedArray = [...new Set(arr)];
+    return duplicatesRemovedArray;
+}
+
+console.log("removeDuplicatesSorted", removeDuplicatesSorted([1, 1, 2, 2, 3, 4, 4])); 
+// Expects 4 (array modified to [1, 2, 3, 4])
+
+
+/**
+Write a function that returns the index of the first occurrence
+of a target element in an array, or -1 if not found
+*/
+function indexOfElement(arr, target) {
+   for(let i = 0; i< arr.length; i++){
+    if(arr[i] === target){
+        return i;
+    }
+   }
+   return -1;
+}
+
+console.log("indexOfElement", indexOfElement([5, 3, 7, 1, 3], 3)); // Expects 1
+console.log("indexOfElement", indexOfElement([5, 3, 7, 1, 3], 9)); // Expects -1
+
+ 
