@@ -246,4 +246,20 @@ function indexOfElement(arr, target) {
 console.log("indexOfElement", indexOfElement([5, 3, 7, 1, 3], 3)); // Expects 1
 console.log("indexOfElement", indexOfElement([5, 3, 7, 1, 3], 9)); // Expects -1
 
+/**
+Write a function that takes an array of 0s and 1s
+and returns the maximum number of consecutive 1s
+*/
+//sliding window problem
+function maxConsecutiveOnes(arr) {
+    let currentCount = 0;
+    let l = 0;
+    for(let i=0; i< arr.length; i++){
+
+    }
+}
+
+console.log("maxConsecutiveOnes", maxConsecutiveOnes([1, 1, 0, 1, 1, 1])); // Expects 3
+
+
  
