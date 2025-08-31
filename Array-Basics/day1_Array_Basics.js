@@ -253,18 +253,18 @@ and returns the maximum number of consecutive 1s
 //sliding window problem
 
 function maxConsecutiveOnes(arr) {
+    let maximumCount = 0;
     let currentCount = 0;
-    let maxCount = 0;
 
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === 1) {
-            currentCount++;
-            maxCount = Math.max(maxCount, currentCount);
+    for(let i = 0; i< arr.length; i++){
+        if(arr[i]===1){
+            currentCount += 1;
+            maximumCount = Math.max(maximumCount, currentCount); 
         } else {
             currentCount = 0;
         }
     }
-    return maxCount;
+    return maximumCount;
 }
 
 
