@@ -298,3 +298,36 @@ function maximumProductTriplet(arr){
  console.log("Maximum Product of triplet", maximumProductTriplet([10, 3, 5, 6, 20])); // Expects 1200
  console.log("Maximum Product of triplet", maximumProductTriplet([-10, -3, -5, -6, -20])); //Expects -90
  console.log("Maximum Product of triplet", maximumProductTriplet([1, -4, 3, -6, 7, 0])); //Expects 168
+
+
+ /*
+ Input: arr[] = [16, 17, 4, 3, 5, 2]
+Output: [17 5 2]
+Explanation: 17 is greater than all the elements to its right i.e., [4, 3, 5, 2], therefore 17 is a leader. 
+5 is greater than all the elements to its right i.e., [2], therefore 5 is a leader. 
+2 has no element to its right, therefore 2 is a leader.
+
+ **/
+
+
+function leader(arr){
+    const result = [];
+    const n = arr.length;
+
+    let maxRight = arr[n - 1];
+    result.push(maxRight);
+
+    for(let i = n - 2; i>=0; i--){
+        if(arr[i] >= maxRight){
+            maxRight = arr[i];
+            result.push(maxRight);
+        }
+    }
+    result.reverse();
+
+    return result;
+}
+
+const arr = [16, 17, 4, 3, 5, 2];
+
+console.log('Leaders array is: ', leader(arr));
