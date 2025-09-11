@@ -331,3 +331,24 @@ function leader(arr){
 const arr = [16, 17, 4, 3, 5, 2];
 
 console.log('Leaders array is: ', leader(arr));
+
+
+
+/**
+ * 1. Find the Maximum Subarray Sum (Kadane’s Algorithm)
+Problem: Given an array of integers, find the contiguous subarray with the largest sum.
+*/
+function maxSubArray(nums){
+    let max_sum = 0;
+    let current_sum = 0;
+    for (num of nums){
+        current_sum = Math.max(num, current_sum + num);
+        max_sum = Math.max(max_sum, current_sum);
+    }
+
+    return max_sum;
+
+}
+
+const nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+console.log('Contiguous sub array with Largest sum:', maxSubArray(nums)); //expected Output: 6
