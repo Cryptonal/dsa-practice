@@ -352,3 +352,33 @@ function maxSubArray(nums){
 
 const nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 console.log('Contiguous sub array with Largest sum:', maxSubArray(nums)); //expected Output: 6
+
+/**
+ * Given a non-negative number represented as an array of digits. 
+ * The task is to add 1 to the number (increment the number represented by the digits by 1). 
+ * The digits are stored such that the most significant digit is the first element of the array.
+ * **/
+
+
+function plusOne(digits) {
+  // Create a copy to avoid mutating the original array
+  const resultArray = [...digits];
+  
+  for (let i = resultArray.length - 1; i >= 0; i--) {
+    if (resultArray[i] < 9) {
+      resultArray[i]++;
+      // Convert array to number
+      return parseInt(resultArray.join(''));
+    }
+    resultArray[i] = 0;
+  }
+  
+  resultArray.unshift(1);
+  // Convert array to number
+  return parseInt(resultArray.join(''));
+}
+
+const a = [1, 2, 4];
+const b = [9, 9, 9];
+
+console.log('Result of added 1 to an array number is: ', plusOne(a));
