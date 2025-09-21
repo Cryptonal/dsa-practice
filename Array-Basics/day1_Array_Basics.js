@@ -389,8 +389,8 @@ console.log('Result of added 1 to an array number is: ', plusOne(a));
  * while maintaining the relative order of all non-zero elements.
 */
 
-function pushZerosToEnd(arr) {
-    const n = arr.length;
+function pushZerosToEnd(zeroArr) {
+    const n = zeroArr.length;
     const temp = new Array(n);
 
     // to keep track of the index in temp[]
@@ -398,7 +398,7 @@ function pushZerosToEnd(arr) {
 
     // Copy non-zero elements to temp[]
     for (let i = 0; i < n; i++) {
-        if (arr[i] !== 0) {
+        if (zeroArr[i] !== 0) {
             temp[j++] = arr[i];
         }
     }
@@ -409,10 +409,41 @@ function pushZerosToEnd(arr) {
 
     // Copy all the elements from temp[] to arr[]
     for (let i = 0; i < n; i++)
-        arr[i] = temp[i];
+        zeroArr[i] = temp[i];
+
+    return zeroArr.join(" ");
 }
 
 const zeroArr = [1, 2, 0, 4, 3, 0, 5, 0];
-pushZerosToEnd(arr);
+console.log('New array with zeros shifted to right', pushZerosToEnd(zeroArr));  //expected []
 
-console.log(arr.join(" "));
+
+/**
+ * Given an unsorted array arr[] of size n, containing elements from the range 1 to n, 
+ * it is known that one number in this range is missing, and another number occurs 
+ * twice in the array, find both the duplicate number and the missing number.
+ * **/
+
+function findTwoElement(dupArr) {
+    let n = dupArr.length;
+
+    // frequency array to count occurrences
+    let freq = new Array(n + 1).fill(0);
+    let repeating = -1, missing = -1;
+
+    // count frequency of each element
+    for (let i = 0; i < n; i++) {
+        freq[dupArr[i]]++;
+    }
+
+    // identify missing and repeating numbers
+    for (let i = 1; i <= n; i++) {
+        if (freq[i] === 0) missing = i;
+        else if (freq[i] === 2) repeating = i;
+    }
+
+    return [repeating, missing];
+}
+
+const dupArr = [4, 3, 6, 2, 1, 1];
+console.log('Duplicates are:', findTwoElement(dupArr));  //Expected [1, 5]
