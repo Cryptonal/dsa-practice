@@ -447,3 +447,43 @@ function findTwoElement(dupArr) {
 
 const dupArr = [4, 3, 6, 2, 1, 1];
 console.log('Duplicates are:', findTwoElement(dupArr));  //Expected [1, 5]
+
+
+/**
+ * Given an array prices[] representing stock prices, find the maximum total profit 
+ * that can be earned by buying and selling the stock any number of times.
+ * **/
+
+/**
+ * Input: prices[] = [100, 180, 260, 310, 40, 535, 695]
+Output: 865
+Explanation: Buy the stock on day 0 and sell it on day 3 = 310 - 100 = 210 and 
+Buy the stock on day 4 and sell it on day 6 = 695 - 40 = 655 so the 
+Maximum Profit  is = 210 + 655 = 865.
+ * **/
+function maxProfitRec(price, start, end){
+    let res = 0;
+
+    // Try every possible pair of buy (i) and sell (j)
+    for (let i = start; i < end; i++) {
+        for (let j = i + 1; j <= end; j++) {
+            // Valid transaction if selling price > buying price
+            if (price[j] > price[i]) {
+                let curr = (price[j] - price[i]) +
+                           maxProfitRec(price, start, i - 1) +
+                           maxProfitRec(price, j + 1, end);
+                res = Math.max(res, curr);
+            }
+        }
+    }
+    return res;
+}
+
+function maxProfit(prices){
+    return maxProfitRec(prices, 0, prices.length - 1);
+}
+
+
+let prices = [100, 180, 260, 310, 40, 535, 695]
+
+console.log('Maximum profit that can be earned:', maxProfit(prices));  //Expected 865
