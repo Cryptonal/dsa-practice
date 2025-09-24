@@ -487,3 +487,30 @@ function maxProfit(prices){
 let prices = [100, 180, 260, 310, 40, 535, 695]
 
 console.log('Maximum profit that can be earned:', maxProfit(prices));  //Expected 865
+
+/**
+ * Given an integer array arr[], compute the sum of all possible sub-arrays 
+ * of the array. A sub-array is a contiguous part of the array.
+ * **/
+function subArraySum(subArr){
+    let n = subArr.length;
+    let result = 0;
+
+    // pick starting point
+    for (let i = 0; i < n; i++) {
+        let temp = 0;
+
+        // pick ending point
+        for (let j = i; j < n; j++) {
+            
+            // sum subarray between current starting
+            // and ending points
+            temp += subArr[j];
+            result += temp;
+        }
+    }
+    return result;
+}
+
+const subArr = [1, 4, 5, 3, 2];
+console.log('Sum of all possible subarrays is:', subArraySum(subArr));   //Expected: 116
